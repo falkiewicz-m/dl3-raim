@@ -15,7 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from dl3app.views import post_l
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('ajax/', post_l),
 ]
