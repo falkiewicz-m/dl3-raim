@@ -8,9 +8,30 @@
 		<header>
 			<form method="post">
 				{% csrf_token %}
-				{{ form.as_p }}
+				{{ form_kp.as_p }}
 				<button type="submit">OK</button>
 			</form>
 		</header>
 	</body>
+	<script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+	<script type="text/javascript">
+		$("#id_kod").change(function ()
+		{
+			var kodpocztowy = $(this).val();
+			console.log(kodpocztowy);
+
+			$.ajax(
+			{
+				url: 'a/v/',
+				data: {'kodpocztowy': kodpocztowy},
+				dataType: 'json',
+				success: function(data)
+				{
+					console.log("ps");
+					if(data.is_invalid)
+					{alert("Nie");}
+				}
+			});
+		});
+	</script>
 </html>
