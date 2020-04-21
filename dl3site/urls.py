@@ -22,5 +22,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('ajax/', post_l),
     path('a/', kp),
-    url(r'a/v/$', validate_kp, name='validate_kp')
+    url(r'^a/v/$', validate_kp, name='validate_kp')
 ]

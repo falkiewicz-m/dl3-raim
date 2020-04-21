@@ -22,14 +22,20 @@
 
 			$.ajax(
 			{
-				url: 'a/v/',
+				url: '/a/v/',
 				data: {'kodpocztowy': kodpocztowy},
 				dataType: 'json',
 				success: function(data)
 				{
 					console.log("ps");
-					if(data.is_invalid)
-					{alert("Nie");}
+					if(data.is_valid == null)
+					{alert("Niepoprawny format adresu pocztowego.");}
+					else
+						{alert("humor gituwa")};
+				},
+				error: function()
+				{
+					console.log("faken");
 				}
 			});
 		});

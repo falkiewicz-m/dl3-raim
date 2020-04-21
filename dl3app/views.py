@@ -18,9 +18,9 @@ def kp(request):
 	return render(request, 'dl3app/dl3.html', {'form_kp':form_kp})
 
 def validate_kp(request):
-	get_kod = request.GET.get('kodpocztowy', None)
+	get_kod = request.GET.get('kodpocztowy', '0')
 	data = {
-		'is_invalid' : re.match("([0-9]{2})(-)([0-9]{3})", get_kod)
+		'is_valid' : re.match("([0-9]{2})(-)([0-9]{3})", get_kod)
 	}
 	return JsonResponse(data)
 
