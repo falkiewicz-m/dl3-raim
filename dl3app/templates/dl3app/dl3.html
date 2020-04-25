@@ -1,43 +1,27 @@
+<!DOCTYPE HTML>
 {% load static %}
 <html>
 	<head>
 		<meta charset="utf-8">
 		<title>Michal Falkiewicz - Distance Learing 3</title>
+		<link rel="stylesheet" href="{% static 'main.css' %}"/>
 	</head>
 	<body>
 		<header>
+			Strona do weryfikacji poprawności kodu pocztowego
+		</header>
+		<div>
+			Podaj kod pocztowy w formacie "CC-CCC", gdzie "C" jest liczbą.
 			<form method="post">
 				{% csrf_token %}
 				{{ form_kp.as_p }}
+				<div id=weryfikacja>
+					<br/>
+				</div>
 				<button type="submit">OK</button>
 			</form>
-		</header>
+		</div>	
 	</body>
 	<script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
-	<script type="text/javascript">
-		$("#id_kod").change(function ()
-		{
-			var kodpocztowy = $(this).val();
-			console.log(kodpocztowy);
-
-			$.ajax(
-			{
-				url: '/a/v/',
-				data: {'kodpocztowy': kodpocztowy},
-				dataType: 'json',
-				success: function(data)
-				{
-					console.log("ps");
-					if(data.is_valid == 'falszywy')
-					{alert("Niepoprawny format adresu pocztowego.");}
-					else
-					{alert("ok");}
-				},
-				error: function()
-				{
-					console.log("Coś poszło nie tak");
-				}
-			});
-		});
-	</script>
+	<script src="{% static 'ajaxdl3.js' %}"></script>
 </html>

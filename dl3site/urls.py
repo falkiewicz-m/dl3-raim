@@ -16,11 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.conf.urls import url
 from django.urls import path
-from dl3app.views import post_l, kp, validate_kp
+from dl3app.views import kp, validate_kp
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('ajax/', post_l),
-    path('a/', kp),
-    url(r'^a/v/$', validate_kp, name='validate_kp')
+    path('ajax/', kp),
+    url(r'^ajax/weryfikacja/$', validate_kp, name='validate_kp')
 ]
