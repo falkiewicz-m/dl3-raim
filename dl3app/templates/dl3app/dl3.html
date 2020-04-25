@@ -28,14 +28,14 @@
 				success: function(data)
 				{
 					console.log("ps");
-					if(data.is_valid == null)
+					if(data.is_valid == 'falszywy')
 					{alert("Niepoprawny format adresu pocztowego.");}
 					else
-						{alert("humor gituwa")};
+					{alert("ok");}
 				},
 				error: function()
 				{
-					console.log("faken");
+					console.log("Coś poszło nie tak");
 				}
 			});
 		});

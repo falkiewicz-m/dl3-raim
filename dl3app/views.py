@@ -19,8 +19,9 @@ def kp(request):
 
 def validate_kp(request):
 	get_kod = request.GET.get('kodpocztowy', '0')
-	data = {
-		'is_valid' : re.match("([0-9]{2})(-)([0-9]{3})", get_kod)
-	}
-	return JsonResponse(data)
+	input = re.match("([0-9]{2})(-)([0-9]{3})", get_kod)
+	if input is None:
+		return JsonResponse({'is_valid' : 'falszywy'})
+	data = { 'is_valid' : input[0] }
+	return JsonResponse(data, safe=False)
 
